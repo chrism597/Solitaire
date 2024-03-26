@@ -15,6 +15,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Instructions.unity
     guid: 3ef9638d817644d108c8587df08789e7
   - enabled: 1
+    path: Assets/Scenes/Clock Instructions.unity
+    guid: 6d36543952b7d474e950c1be241f1e81
+  - enabled: 1
+    path: Assets/Scenes/Regular Instructions.unity
+    guid: 04f478526fb0e40feb86f9e885fbd55c
+  - enabled: 1
+    path: Assets/Scenes/Pyramid Instructions.unity
+    guid: a2dc5f612c3e04d88a20d99009aaa7c2
+  - enabled: 1
     path: Assets/Scenes/Solitaire.unity
     guid: 21017a52fca4e41728023b98d7182251
   m_configObjects: {}

@@ -16,4 +16,12 @@ public class Instruction_Screen : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(4);
     }
+    public void GoBackMenu()
+    {
+        SceneManager.LoadSceneAsync(0);
+    }
+    public void GoBackInstruction()
+    {
+        SceneManager.LoadSceneAsync(1);
+    }
 }
