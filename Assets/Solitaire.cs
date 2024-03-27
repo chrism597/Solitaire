@@ -22,6 +22,7 @@ public class Solitaire : MonoBehaviour
     public void PlayCards()
     {
         deck = GenerateDeck();
+        Shuffle(deck);
         foreach (string card in deck)
         {
             print(card);
@@ -39,4 +40,18 @@ public class Solitaire : MonoBehaviour
         }
         return newDeck;
     }
+    void Shuffle<T>(List<T> list)
+    {
+        System.Random random = new System.Random();
+        int n = list.Count;
+        while (n > 1)
+        {
+            int k = random.Next(n);
+            n--;
+            T temp = list[k];
+            list[k] = list[n];
+            list[n] = temp;
+        }
+    }
+    
 }
