@@ -109,12 +109,12 @@ public class Solitaire : MonoBehaviour
                 yield return new WaitForSeconds(0.05f);
                 GameObject newCard = Instantiate(cardPrefab, new Vector3(bottomPos[i].transform.position.x, bottomPos[i].transform.position.y - yOffset, bottomPos[i].transform.position.z - zOffset), Quaternion.identity, bottomPos[i].transform);
                 newCard.name = card;
+                newCard = GameObject.FindWithTag("Card");
                 newCard.GetComponent<Selectable>().row = i;
                 if (card == bottoms[i][bottoms[i].Count -1])
                 {
                     newCard.GetComponent<Selectable>().faceUp = true;
                 }
-                
 
                 yOffset = yOffset + 0.3f;
                 zOffset = zOffset + 0.03f;
