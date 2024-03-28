@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 60048751}
   - component: {fileID: 60048752}
   m_Layer: 0
-  m_Name: TopDeck3
+  m_Name: Top2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 114421190}
   - component: {fileID: 114421191}
   m_Layer: 0
-  m_Name: TopDeck2
+  m_Name: Top1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 166580237}
   - component: {fileID: 166580238}
   m_Layer: 0
-  m_Name: BottomDeck4
+  m_Name: Bottom4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -386,7 +386,7 @@ GameObject:
   - component: {fileID: 239165490}
   - component: {fileID: 239165491}
   m_Layer: 0
-  m_Name: BottomDeck
+  m_Name: Bottom0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -470,7 +470,7 @@ GameObject:
   - component: {fileID: 354915748}
   - component: {fileID: 354915749}
   m_Layer: 0
-  m_Name: BottomDeck2
+  m_Name: Bottom2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -797,7 +797,7 @@ GameObject:
   - component: {fileID: 938384680}
   - component: {fileID: 938384681}
   m_Layer: 0
-  m_Name: TopDeck4
+  m_Name: Top3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -881,7 +881,7 @@ GameObject:
   - component: {fileID: 942184197}
   - component: {fileID: 942184198}
   m_Layer: 0
-  m_Name: BottomDeck5
+  m_Name: Bottom5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -984,6 +984,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3af9b590e6ca64e2fb0284d87a0ae310, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slot1: {fileID: 0}
 --- !u!114 &1157886564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1050,7 +1051,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 040fdaacb1b3c4a4abc79014ef5951b7, type: 3}
   - {fileID: 21300000, guid: 543829c493437034e82b55092c673c30, type: 3}
   cardPrefab: {fileID: 3943974345575438667, guid: 1691fd5a97d5f43efb16c4cb2dd94268, type: 3}
+  deckButton: {fileID: 0}
+  bottomPos: []
+  topPos: []
+  tripsOnDisplay: []
   deck: []
+  discardPile: []
 --- !u!4 &1157886565
 Transform:
   m_ObjectHideFlags: 0
@@ -1115,7 +1121,7 @@ GameObject:
   - component: {fileID: 1627262030}
   - component: {fileID: 1627262031}
   m_Layer: 0
-  m_Name: BottomDeck3
+  m_Name: Bottom3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1199,7 +1205,7 @@ GameObject:
   - component: {fileID: 1659038169}
   - component: {fileID: 1659038170}
   m_Layer: 0
-  m_Name: BottomDeck6
+  m_Name: Bottom6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1283,7 +1289,7 @@ GameObject:
   - component: {fileID: 1774952629}
   - component: {fileID: 1774952630}
   m_Layer: 0
-  m_Name: BottomDeck1
+  m_Name: Bottom1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1367,7 +1373,7 @@ GameObject:
   - component: {fileID: 1956706263}
   - component: {fileID: 1956706264}
   m_Layer: 0
-  m_Name: TopDeck
+  m_Name: Top0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1440,6 +1446,29 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2026016845 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3943974345575438667, guid: 1691fd5a97d5f43efb16c4cb2dd94268, type: 3}
+  m_PrefabInstance: {fileID: 582210416612936998}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2026016849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026016845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b074beae4c0bd4e328309e2da9c73c97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  top: 0
+  suit: 
+  value: 0
+  row: 0
+  faceUp: 0
+  inDeckPile: 0
 --- !u!1001 &582210416612936998
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1495,7 +1524,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3943974345575438667, guid: 1691fd5a97d5f43efb16c4cb2dd94268, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2026016849}
   m_SourcePrefab: {fileID: 100100000, guid: 1691fd5a97d5f43efb16c4cb2dd94268, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
