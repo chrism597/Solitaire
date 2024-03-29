@@ -1,6 +1,5 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 
 public class UpdateSprite : MonoBehaviour
@@ -20,7 +19,7 @@ public class UpdateSprite : MonoBehaviour
         List<string> deck = Solitaire.GenerateDeck();
         solitaire = FindObjectOfType<Solitaire>();
         userInput = FindObjectOfType<UserInput>();
-        
+
         int i = 0;
         foreach (string card in deck)
         {

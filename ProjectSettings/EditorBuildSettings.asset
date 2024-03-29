@@ -7,10 +7,10 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    guid: 3fc8acdd13e6c734bafef6554d6fdbcd
   - enabled: 1
     path: Assets/Scenes/Main Menu.unity
-    guid: 3fc8acdd13e6c734bafef6554d6fdbcd
+    guid: 1dd690be3aea3460da141ebbe6657d35
   - enabled: 1
     path: Assets/Scenes/Instructions.unity
     guid: 3ef9638d817644d108c8587df08789e7
@@ -27,7 +27,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Solitaire.unity
     guid: 21017a52fca4e41728023b98d7182251
   - enabled: 1
-    path: Assets/Scenes/Regular Solitaire.unity
-    guid: 1ff8687d6cb8845a88ed083f25d3afc5
-  m_configObjects:
-    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: e6e1603958e2f4a4e911f1bdbcc27ab2, type: 2}
+    path: Assets/Scenes/SolitaireGame.unity
+    guid: 7aee90f4bfc1e894d9eb9e82416162d0
+  m_configObjects: {}
