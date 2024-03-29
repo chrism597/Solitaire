@@ -87,13 +87,13 @@ public class Solitaire : MonoBehaviour
     {
         System.Random random = new System.Random();
         int n = list.Count;
-        while (n > 1)
+        
+        for (int i = n - 1; i > 0; i--)
         {
-            int k = random.Next(n);
-            n--;
-            T temp = list[k];
-            list[k] = list[n];
-            list[n] = temp;
+            int j = random.Next(i + 1);
+            T temp = list[j];
+            list[j] = list[i];
+            list[i] = temp;
         }
     }
 
