@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 127862797}
   - component: {fileID: 127862796}
   m_Layer: 0
-  m_Name: Square
+  m_Name: BG_MM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -604,7 +604,7 @@ GameObject:
   - component: {fileID: 762845072}
   - component: {fileID: 762845071}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Game_Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
