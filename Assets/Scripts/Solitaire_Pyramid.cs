@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Solitaire_Pyramid : MonoBehaviour
 {
+    public Sprite[] cardFaces;
     public static string[] suits = new string[] { "C", "D", "H", "S" };
     public static string[] values = new string[] { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
     public List<string> deck;
