@@ -74,7 +74,7 @@ public class Solitaire_Pyramid : MonoBehaviour
         foreach(string card in deck){
             GameObject newCard = Instantiate(cardPrefab, new Vector3(transform.position.x + xOffset, transform.position.y + yOffset, transform.position.z + zOffset) , Quaternion.identity);
             newCard.name = card;
-
+            newCard.GetComponent<Selectable_Pyr>().faceUp = true;
             //yOffset = yOffset - 0.1f;
             zOffset = zOffset + 0.03f;
             xOffset = xOffset + 0.1f;
