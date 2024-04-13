@@ -68,14 +68,16 @@ public class Solitaire_Pyramid : MonoBehaviour
     }
     void SolitaireDeal()
     {
+        float xOffset = 0;
         float yOffset = 0;
         float zOffset = 0;
         foreach(string card in deck){
-            GameObject newCard = Instantiate(cardPrefab, new Vector3(transform.position.x, transform.position.y - yOffset, transform.position.z + zOffset) , Quaternion.identity);
+            GameObject newCard = Instantiate(cardPrefab, new Vector3(transform.position.x + xOffset, transform.position.y + yOffset, transform.position.z + zOffset) , Quaternion.identity);
             newCard.name = card;
 
-            yOffset = yOffset - 0.1f;
+            //yOffset = yOffset - 0.1f;
             zOffset = zOffset + 0.03f;
+            xOffset = xOffset + 0.1f;
         }
     }
     
