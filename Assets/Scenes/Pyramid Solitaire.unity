@@ -291,6 +291,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &529611354 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6671493643401840181, guid: 8bb5297cef0664cc38a6e55bd1cd243b, type: 3}
+  m_PrefabInstance: {fileID: 8092447046338214521}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &529611358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529611354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9892a82bd3b4144ff8abc7a250e6161b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardFace: {fileID: 0}
+  cardBack: {fileID: 21300000, guid: fa045cd8f96ddbf4ca0443284f64e6bd, type: 3}
 --- !u!1 &1111447806
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,7 +339,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8aa57f5d685f41658feb16fac9e2887, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardFaces: []
+  cardFaces:
+  - {fileID: 21300000, guid: 5edd54aed793c6345a5d8e3d0bb44b01, type: 3}
+  - {fileID: 21300000, guid: d9a5ab15dace6b2469bb16712cae75af, type: 3}
+  - {fileID: 21300000, guid: 25eb209edcb0ba749a0d48e7aae66323, type: 3}
+  - {fileID: 21300000, guid: 4d0e28ff6e30f994e97ab01762fdb1ae, type: 3}
+  - {fileID: 21300000, guid: 0de147e0358d2ef458821942e9c77de5, type: 3}
+  - {fileID: 21300000, guid: 778a34b5aa8c4e740abf885c20465a30, type: 3}
+  - {fileID: 21300000, guid: 5cf6886f65aadac4faad201c4f034178, type: 3}
+  - {fileID: 21300000, guid: ed2d6dd3d328eb44aa993aafa444aab0, type: 3}
+  - {fileID: 21300000, guid: 32875c1d6efb8b64c886483784be2653, type: 3}
+  - {fileID: 21300000, guid: 912517245b6f79e4fbccce05666d448a, type: 3}
+  - {fileID: 21300000, guid: b68d8a924e83d1a4796b528026ff4219, type: 3}
+  - {fileID: 21300000, guid: 24df74199e1155f49b05b9d80c30478d, type: 3}
+  - {fileID: 21300000, guid: 31cafb3900321bc4d951d3b3fd6006da, type: 3}
+  - {fileID: 21300000, guid: 34689198e0d030a4180368fe3d488a3c, type: 3}
+  - {fileID: 21300000, guid: ca4d4f2362df76b43b249532d5e47861, type: 3}
+  - {fileID: 21300000, guid: 80b22dc3f35dc624bb3e60465b569099, type: 3}
+  - {fileID: 21300000, guid: 8030798f2c754dc44a8c7e097655d547, type: 3}
+  - {fileID: 21300000, guid: 5ae3eb1836bce0b44ac094d42a9e165e, type: 3}
+  - {fileID: 21300000, guid: 9ed8afd30cbec254f839dcb2a49c048f, type: 3}
+  - {fileID: 21300000, guid: 276d358a979072745834e3ca3b9f1a1c, type: 3}
+  - {fileID: 21300000, guid: 115ecbb7dd006a849b42bd05d2791079, type: 3}
+  - {fileID: 21300000, guid: 1bebf6cbcaacfef4a9cfccb7c5591c34, type: 3}
+  - {fileID: 21300000, guid: d87fb272251468e41b8a926220062012, type: 3}
+  - {fileID: 21300000, guid: 3a3084d8bd688be49abd72d2b2bb7282, type: 3}
+  - {fileID: 21300000, guid: 8f092e6da8c10234eb39d878a5af1123, type: 3}
+  - {fileID: 21300000, guid: a31c689c326e5604eaa98cc0756a1a61, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   cardPrefab: {fileID: 6671493643401840181, guid: 8bb5297cef0664cc38a6e55bd1cd243b, type: 3}
   bottomPos:
   - {fileID: 1445695994}
@@ -866,6 +937,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4365685190913402084, guid: 8bb5297cef0664cc38a6e55bd1cd243b, type: 3}
+      propertyPath: faceUp
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6671493643401840181, guid: 8bb5297cef0664cc38a6e55bd1cd243b, type: 3}
       propertyPath: m_Name
       value: Card
@@ -873,7 +948,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6671493643401840181, guid: 8bb5297cef0664cc38a6e55bd1cd243b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 529611358}
   m_SourcePrefab: {fileID: 100100000, guid: 8bb5297cef0664cc38a6e55bd1cd243b, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
