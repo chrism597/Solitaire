@@ -20,7 +20,7 @@ public class Solitaire_Pyramid : MonoBehaviour
     }
     public void PlayCards(){
         deck = GenerateDeck();
-
+        Shuffle(deck);
         foreach(string card in deck)
         {
             print(card);
@@ -37,5 +37,18 @@ public class Solitaire_Pyramid : MonoBehaviour
             }
         }
         return newDeck;
+    }
+    void Shuffle<T>(List<T> list)
+    {
+        System.Random random = new System.Random();
+        int n = list.Count;
+        
+        for (int i = n - 1; i > 0; i--)
+        {
+            int j = random.Next(i + 1);
+            T temp = list[j];
+            list[j] = list[i];
+            list[i] = temp;
+        }
     }
 }
