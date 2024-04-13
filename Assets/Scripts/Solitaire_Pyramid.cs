@@ -1,17 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Solitaire_Pyramid : MonoBehaviour
 {
     public Sprite[] cardFaces;
     public GameObject cardPrefab;
+    public GameObject[] bottomPos;
     public static string[] suits = new string[] { "C", "D", "H", "S" };
     public static string[] values = new string[] { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
+    public List<string>[] bottoms;
+    private List<string> bottom0 = new List<string>();
+    private List<string> bottom1 = new List<string>();
+    private List<string> bottom2 = new List<string>();
+    private List<string> bottom3 = new List<string>();
+    private List<string> bottom4 = new List<string>();
+    private List<string> bottom5 = new List<string>();
     public List<string> deck;
+
     // Start is called before the first frame update
     void Start()
     {
+        bottoms = new List<string>[] {bottom0, bottom1,bottom2,bottom3,bottom4,bottom5};
         PlayCards();
     }
 
@@ -60,6 +71,17 @@ public class Solitaire_Pyramid : MonoBehaviour
         foreach(string card in deck){
              GameObject newCard = Instantiate(cardPrefab, transform.position, Quaternion.identity);
             newCard.name = card;
+        }
+    }
+    void SolitaireSort()
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            for(int j = 0; j < 6; j++)
+            {
+                bottom0[j].Add(deck.Last<string>());
+                deck.RemoveAt(deck.Count - 1);
+            }
         }
     }
 }
