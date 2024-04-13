@@ -77,7 +77,7 @@ public class Solitaire_Pyramid : MonoBehaviour
             newCard.GetComponent<Selectable_Pyr>().faceUp = true;
             //yOffset = yOffset - 0.1f;
             zOffset = zOffset + 0.03f;
-            xOffset = xOffset + 0.1f;
+            xOffset = xOffset + 1f;
         }
     }
     
