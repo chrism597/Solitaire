@@ -71,9 +71,9 @@ public class Solitaire_Pyramid : MonoBehaviour
     }
     void SolitaireSort()
     {
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 7; i++)
         {
-            for(int j = 0; j < 6; j++)
+            for(int j = 0; j < i; j++)
             {
                 bottoms[j].Add(deck.Last<string>());
                 deck.RemoveAt(deck.Count - 1);
