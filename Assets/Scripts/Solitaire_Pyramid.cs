@@ -39,8 +39,11 @@ public class Solitaire_Pyramid : MonoBehaviour
         {
             print(card);
         }
+        SolitaireSort();
         SolitaireDeal();
     }
+
+    
     public static List<string> GenerateDeck()
     {
         List<string> newDeck = new List<string>();
@@ -66,19 +69,34 @@ public class Solitaire_Pyramid : MonoBehaviour
             list[i] = temp;
         }
     }
+    void SolitaireSort()
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            for(int j = 0; j < 6; j++)
+            {
+                bottoms[j].Add(deck.Last<string>());
+                deck.RemoveAt(deck.Count - 1);
+            }
+        }
+    }
     void SolitaireDeal()
     {
-        float xOffset = 0;
-        float yOffset = 0;
-        float zOffset = 0;
-        foreach(string card in deck){
-            GameObject newCard = Instantiate(cardPrefab, new Vector3(transform.position.x + xOffset, transform.position.y + yOffset, transform.position.z + zOffset) , Quaternion.identity);
+        for(int i = 0; i < 6; i++)
+        {
+            float xOffset = 0;
+            float yOffset = 0;
+            float zOffset = 0;
+            foreach(string card in bottoms[i]){
+            GameObject newCard = Instantiate(cardPrefab, new Vector3(bottomPos[i].transform.position.x + xOffset, bottomPos[i].transform.position.y + yOffset, bottomPos[i].transform.position.z + zOffset) , Quaternion.identity, bottomPos[i].transform);
             newCard.name = card;
             newCard.GetComponent<Selectable_Pyr>().faceUp = true;
             //yOffset = yOffset - 0.1f;
             zOffset = zOffset + 0.03f;
             xOffset = xOffset + 1f;
+            }
         }
+        
     }
     
 }
