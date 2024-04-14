@@ -40,7 +40,7 @@ public class Solitaire_Pyramid : MonoBehaviour
             print(card);
         }
         SolitaireSort();
-        SolitaireDeal();
+        StartCoroutine(SolitaireDeal());
     }
 
     
@@ -80,7 +80,7 @@ public class Solitaire_Pyramid : MonoBehaviour
             }
         }
     }
-    void SolitaireDeal()
+    IEnumerator SolitaireDeal()
     {
         for(int i = 0; i < 6; i++)
         {
@@ -88,12 +88,13 @@ public class Solitaire_Pyramid : MonoBehaviour
             float yOffset = 0;
             float zOffset = 0;
             foreach(string card in bottoms[i]){
-            GameObject newCard = Instantiate(cardPrefab, new Vector3(bottomPos[i].transform.position.x + xOffset, bottomPos[i].transform.position.y + yOffset, bottomPos[i].transform.position.z + zOffset) , Quaternion.identity, bottomPos[i].transform);
-            newCard.name = card;
-            newCard.GetComponent<Selectable_Pyr>().faceUp = true;
-            //yOffset = yOffset - 0.1f;
-            zOffset = zOffset + 0.03f;
-            xOffset = xOffset + 1f;
+                yield return new WaitForSeconds(0.05f); 
+                GameObject newCard = Instantiate(cardPrefab, new Vector3(bottomPos[i].transform.position.x + xOffset, bottomPos[i].transform.position.y + yOffset, bottomPos[i].transform.position.z + zOffset) , Quaternion.identity, bottomPos[i].transform);
+                newCard.name = card;
+                newCard.GetComponent<Selectable_Pyr>().faceUp = true;
+                //yOffset = yOffset - 0.1f;
+                zOffset = zOffset + 0.03f;
+                xOffset = xOffset + 1f;
             }
         }
         
