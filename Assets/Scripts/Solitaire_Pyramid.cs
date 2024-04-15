@@ -7,10 +7,13 @@ public class Solitaire_Pyramid : MonoBehaviour
 {
     public Sprite[] cardFaces;
     public GameObject cardPrefab;
+    public GameObject deckButton;
     public GameObject[] bottomPos;
     public static string[] suits = new string[] { "C", "D", "H", "S" };
     public static string[] values = new string[] { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
     public List<string>[] bottoms;
+    public List<string> tripsOnDisplay = new List<string>();
+    public List<List<string>> deckTrips = new List<List<string>>();
     private List<string> bottom0 = new List<string>();
     private List<string> bottom1 = new List<string>();
     private List<string> bottom2 = new List<string>();
@@ -18,6 +21,10 @@ public class Solitaire_Pyramid : MonoBehaviour
     private List<string> bottom4 = new List<string>();
     private List<string> bottom5 = new List<string>();
     public List<string> deck;
+    public List<string> discardPile = new List<string>();
+    private int deckLocation;
+    private int trips;
+    private int tripsRemainder;
 
     // Start is called before the first frame update
     void Start()
@@ -95,9 +102,82 @@ public class Solitaire_Pyramid : MonoBehaviour
                 //yOffset = yOffset - 0.1f;
                 zOffset = zOffset + 0.03f;
                 xOffset = xOffset + 1f;
+                discardPile.Add(card);
             }
         }
+        foreach (string card in discardPile)
+        {
+            if (deck.Contains(card))
+            {
+                deck.Remove(card);
+            }
+        }
+        discardPile.Clear();
+
         
     }
-    
+    public void SortDeckIntoTrips()
+    {
+        trips = deck.Count / 3;
+        tripsRemainder = deck.Count % 3;
+        deckTrips.Clear();
+
+        int modifier = 0;
+        for (int i = 0; i < trips; i++)
+        {
+            List<string> myTrips = new List<string>();
+            for (int j = 0; j < 2; j++)
+            {
+                myTrips.Add(deck[j + modifier]);
+            }
+            deckTrips.Add(myTrips);
+            modifier = modifier + 3;
+        }
+        if (tripsRemainder != 0)
+        {
+            List<string> myRemainders = new List<string>();
+            modifier = 0;
+            for (int k = 0; k < tripsRemainder; k++)
+            {
+                myRemainders.Add(deck[deck.Count - tripsRemainder + modifier]);
+                modifier++;
+            }
+            deckTrips.Add(myRemainders);
+            trips++;
+        }
+        deckLocation = 0;
+
+    }
+
+    public void DealFromDeck()
+    {
+        if(deckLocation < trips)
+        {
+            tripsOnDisplay.Clear();
+            float xOffset = 2.5f;
+
+            foreach (string card in deckTrips[deckLocation]){
+                GameObject newTopCard = Instantiate(cardPrefab, new Vector3(deckButton.transform.position.x + xOffset, deckButton.transform.position.y, deckButton.transform.position.z), Quaternion.identity, deckButton.transform);
+                xOffset = xOffset + 0.5f;
+                newTopCard.name = card;
+                tripsOnDisplay.Add(card);
+                newTopCard.GetComponent<Selectable_Pyr>().faceUp = true;
+            }
+            deckLocation++;
+        }
+        else
+        {
+            RestackTopDeck();
+        }
+    }
+    void RestackTopDeck()
+    {
+        deck.Clear();
+        foreach (string card in discardPile)
+        {
+            deck.Add(card);
+        }
+        discardPile.Clear();
+        SortDeckIntoTrips();
+    }
 }
