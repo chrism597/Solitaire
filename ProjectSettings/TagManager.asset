@@ -7,6 +7,9 @@ TagManager:
   - Card
   - Deck
   - Bottom
+  - Deck_Pyr
+  - Card_Pyr
+  - Bottom_Pyr
   layers:
   - Default
   - TransparentFX

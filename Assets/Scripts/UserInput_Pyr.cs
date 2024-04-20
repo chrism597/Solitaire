@@ -38,10 +38,7 @@ public class UserInput_Pyr : MonoBehaviour
                 {
                     Card(hit.collider.gameObject);
                 }
-                else if(hit.collider.CompareTag("Bottom_Pyr"))
-                {
-                    Bottom();
-                }
+                
             }
         }
     }
@@ -56,10 +53,13 @@ public class UserInput_Pyr : MonoBehaviour
         if(slot1 == this.gameObject)
         {
             slot1 = selected;
-
+            if(slot1.GetComponent<Selectable_Pyr>().value == 13)
+            {
+                Stack();
+                
+            }
         }
-
-        else if(slot1 != selected)
+        else if(slot1 != selected || slot1 != null)
         {
             if(Stackable(selected))
             {
@@ -73,21 +73,16 @@ public class UserInput_Pyr : MonoBehaviour
 
         }
     }
-    void Bottom()
-    {
-        print("clicked on bottom");
-    }
-
+    
     bool Stackable(GameObject selected)
     {
         Selectable_Pyr s1 = slot1.GetComponent<Selectable_Pyr>();
         Selectable_Pyr s2 = selected.GetComponent<Selectable_Pyr>();
         
-        if((s1.value + s2.value) == 13){
+        if((s1.value + s2.value) == 13)
+        {
             print("Pairable");
             return true;
-            
-
         }
         return false;
     }
@@ -100,9 +95,16 @@ public class UserInput_Pyr : MonoBehaviour
             print("remove");
             s1.transform.position = new Vector3(selected.transform.position.x, selected.transform.position.y -100f, selected.transform.position.z);
             s2.transform.position = new Vector3(selected.transform.position.x, selected.transform.position.y -100f, selected.transform.position.z);
-            solitaire.tripsOnDisplay.Remove(slot1.name);
-            print(solitaire.tripsOnDisplay);
+            //solitaire.tripsOnDisplay.Remove(slot1.name);
+            slot1 = this.gameObject;
             
         }
+    }
+    void Stack()
+    {
+        Selectable_Pyr s1 = slot1.GetComponent<Selectable_Pyr>();
+        print("remove");
+        s1.transform.position = new Vector3(s1.transform.position.x, s1.transform.position.y -100f, s1.transform.position.z);
+        slot1 = this.gameObject;
     }
 }
