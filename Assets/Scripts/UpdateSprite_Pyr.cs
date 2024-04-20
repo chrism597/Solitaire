@@ -9,12 +9,14 @@ public class UpdateSprite_Pyr : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Selectable_Pyr selectable;
     private Solitaire_Pyramid solitaire;
+    private UserInput_Pyr userInput;
 
     // Start is called before the first frame update
     void Start()
     {
         List<string> deck = Solitaire_Pyramid.GenerateDeck();
         solitaire = FindObjectOfType<Solitaire_Pyramid>();
+        userInput = FindObjectOfType<UserInput_Pyr>();
 
         int i = 0;
         foreach (string card in deck)
@@ -40,5 +42,17 @@ public class UpdateSprite_Pyr : MonoBehaviour
         else{
             spriteRenderer.sprite = cardBack;
         }
+        if(userInput.slot1)
+        {
+            if(name == userInput.slot1.name)
+        {
+            spriteRenderer.color = Color.yellow;
+        }
+        else
+        {
+            spriteRenderer.color = Color.white;
+        }
+        }
+        
     }
 }

@@ -6,6 +6,7 @@ using System.Linq;
 public class UserInput_Pyr : MonoBehaviour
 {
     private Solitaire_Pyramid solitaire;
+    public GameObject slot1;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +17,7 @@ public class UserInput_Pyr : MonoBehaviour
     void Update()
     {
         GetMouseClick();
+        slot1 = this.gameObject;
     }
 
     void GetMouseClick()
@@ -32,7 +34,7 @@ public class UserInput_Pyr : MonoBehaviour
                 }
                 else if(hit.collider.CompareTag("Card_Pyr"))
                 {
-                    Card();
+                    Card(hit.collider.gameObject);
                 }
                 else if(hit.collider.CompareTag("Bottom_Pyr"))
                 {
@@ -46,12 +48,42 @@ public class UserInput_Pyr : MonoBehaviour
         print("clicked on deck");
         solitaire.DealFromDeck();
     }
-    void Card()
+    void Card(GameObject selected)
     {
         print("clicked on card");
+        if(slot1 == this. gameObject)
+        {
+            slot1 = selected;
+
+        }
+
+        else if(slot1 != selected){
+            if(Stackable(selected))
+            {
+
+            }
+            else
+            {
+                slot1 = selected;
+            }
+            
+
+        }
     }
     void Bottom()
     {
         print("clicked on bottom");
+    }
+
+    bool Stackable(GameObject selected)
+    {
+        Selectable_Pyr s1 = slot1.GetComponent<Selectable_Pyr>();
+        Selectable_Pyr s2 = selected.GetComponent<Selectable_Pyr>();
+        
+        if(s1.value + s2.value == 13){
+            return true;
+
+        }
+        return false;
     }
 }

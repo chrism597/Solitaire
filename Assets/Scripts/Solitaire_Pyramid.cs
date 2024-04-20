@@ -99,7 +99,12 @@ public class Solitaire_Pyramid : MonoBehaviour
                 yield return new WaitForSeconds(0.05f); 
                 GameObject newCard = Instantiate(cardPrefab, new Vector3(bottomPos[i].transform.position.x + xOffset, bottomPos[i].transform.position.y + yOffset, bottomPos[i].transform.position.z + zOffset) , Quaternion.identity, bottomPos[i].transform);
                 newCard.name = card;
-                newCard.GetComponent<Selectable_Pyr>().faceUp = true;
+                newCard.GetComponent<Selectable_Pyr>().row = i;
+                if(card == bottoms[i][bottoms[i].Count-1])
+                {
+                    newCard.GetComponent<Selectable_Pyr>().faceUp = true;
+                }
+                
                 //yOffset = yOffset - 0.1f;
                 zOffset = zOffset + 0.03f;
                 xOffset = xOffset + 1f;
@@ -165,6 +170,7 @@ public class Solitaire_Pyramid : MonoBehaviour
                 newTopCard.name = card;
                 tripsOnDisplay.Add(card);
                 newTopCard.GetComponent<Selectable_Pyr>().faceUp = true;
+                newTopCard.GetComponent<Selectable_Pyr>().inDeckPile = true;
             }
             deckLocation++;
         }
