@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System.Security.Cryptography;
+using Unity.VisualScripting;
 
 public class UserInput_Pyr : MonoBehaviour
 {
@@ -61,7 +63,7 @@ public class UserInput_Pyr : MonoBehaviour
         {
             if(Stackable(selected))
             {
-
+                Stack(selected);
             }
             else
             {
@@ -88,5 +90,19 @@ public class UserInput_Pyr : MonoBehaviour
 
         }
         return false;
+    }
+    void Stack(GameObject selected)
+    {
+        Selectable_Pyr s1 = slot1.GetComponent<Selectable_Pyr>();
+        Selectable_Pyr s2 = selected.GetComponent<Selectable_Pyr>();
+        if((s1.value + s2.value) == 13){}
+        {
+            print("remove");
+            s1.transform.position = new Vector3(selected.transform.position.x, selected.transform.position.y -100f, selected.transform.position.z);
+            s2.transform.position = new Vector3(selected.transform.position.x, selected.transform.position.y -100f, selected.transform.position.z);
+            solitaire.tripsOnDisplay.Remove(slot1.name);
+            print(solitaire.tripsOnDisplay);
+            
+        }
     }
 }
