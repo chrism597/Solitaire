@@ -11,13 +11,13 @@ public class UserInput_Pyr : MonoBehaviour
     void Start()
     {
         solitaire = FindObjectOfType<Solitaire_Pyramid>();
+        slot1 = this.gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
         GetMouseClick();
-        slot1 = this.gameObject;
     }
 
     void GetMouseClick()
@@ -51,13 +51,14 @@ public class UserInput_Pyr : MonoBehaviour
     void Card(GameObject selected)
     {
         print("clicked on card");
-        if(slot1 == this. gameObject)
+        if(slot1 == this.gameObject)
         {
             slot1 = selected;
 
         }
 
-        else if(slot1 != selected){
+        else if(slot1 != selected)
+        {
             if(Stackable(selected))
             {
 
@@ -80,8 +81,10 @@ public class UserInput_Pyr : MonoBehaviour
         Selectable_Pyr s1 = slot1.GetComponent<Selectable_Pyr>();
         Selectable_Pyr s2 = selected.GetComponent<Selectable_Pyr>();
         
-        if(s1.value + s2.value == 13){
+        if((s1.value + s2.value) == 13){
+            print("Pairable");
             return true;
+            
 
         }
         return false;

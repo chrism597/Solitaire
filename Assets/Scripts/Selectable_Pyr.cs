@@ -21,7 +21,7 @@ public class Selectable_Pyr : MonoBehaviour
             for(int i = 1; i < transform.name.Length; i++)
             {
                 char c = transform.name[i];
-                valueString = valueString = c.ToString();
+                valueString = valueString + c.ToString();
             }
             if (valueString == "A")
             {

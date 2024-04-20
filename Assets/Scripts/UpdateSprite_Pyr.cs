@@ -45,13 +45,13 @@ public class UpdateSprite_Pyr : MonoBehaviour
         if(userInput.slot1)
         {
             if(name == userInput.slot1.name)
-        {
+            {
             spriteRenderer.color = Color.yellow;
-        }
-        else
-        {
+            }
+            else
+            {
             spriteRenderer.color = Color.white;
-        }
+            }
         }
         
     }
