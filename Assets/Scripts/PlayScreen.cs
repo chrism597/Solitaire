@@ -14,7 +14,7 @@ public class PlayScreen : MonoBehaviour
     }
     public void PlayPyramid()
     {
-        SceneManager.LoadSceneAsync(1);
+        SceneManager.LoadSceneAsync(7);
     }
     public void GoMainMenu()
     {

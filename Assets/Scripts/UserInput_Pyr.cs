@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class UserInput_Pyr : MonoBehaviour
 {
+    private Solitaire_Pyramid solitaire;
     // Start is called before the first frame update
     void Start()
     {
-        
+        solitaire = FindObjectOfType<Solitaire_Pyramid>();
     }
 
     // Update is called once per frame
@@ -24,15 +26,15 @@ public class UserInput_Pyr : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
             if(hit)
             {
-                if(hit.collider.CompareTag("Deck"))
+                if(hit.collider.CompareTag("Deck_Pyr"))
                 {
                     Deck();
                 }
-                else if(hit.collider.CompareTag("Card"))
+                else if(hit.collider.CompareTag("Card_Pyr"))
                 {
                     Card();
                 }
-                else if(hit.collider.CompareTag("Bottom"))
+                else if(hit.collider.CompareTag("Bottom_Pyr"))
                 {
                     Bottom();
                 }
@@ -42,6 +44,7 @@ public class UserInput_Pyr : MonoBehaviour
     void Deck()
     {
         print("clicked on deck");
+        solitaire.DealFromDeck();
     }
     void Card()
     {
