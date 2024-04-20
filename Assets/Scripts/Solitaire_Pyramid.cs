@@ -127,7 +127,7 @@ public class Solitaire_Pyramid : MonoBehaviour
         for (int i = 0; i < trips; i++)
         {
             List<string> myTrips = new List<string>();
-            for (int j = 0; j < 3; j++)
+            for (int j = 0; j < 2; j++)
             {
                 myTrips.Add(deck[j + modifier]);
             }
@@ -155,13 +155,13 @@ public class Solitaire_Pyramid : MonoBehaviour
         if(deckLocation < trips)
         {
             tripsOnDisplay.Clear();
-            float xOffset = 2.5f;
-            float zOffset = -0.2f;
+            float xOffset = 1.5f;
+            //float zOffset = -0.2f;
 
             foreach (string card in deckTrips[deckLocation]){
                 GameObject newTopCard = Instantiate(cardPrefab, new Vector3(deckButton.transform.position.x + xOffset, deckButton.transform.position.y, deckButton.transform.position.z), Quaternion.identity, deckButton.transform);
-                xOffset = xOffset + 0.5f;
-                zOffset = zOffset - 0.2f;
+                xOffset = xOffset + 1f;
+                //zOffset = zOffset - 0.2f;
                 newTopCard.name = card;
                 tripsOnDisplay.Add(card);
                 newTopCard.GetComponent<Selectable_Pyr>().faceUp = true;
