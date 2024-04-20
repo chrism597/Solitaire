@@ -35,12 +35,12 @@ public class UpdateSprite_Pyr : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(selectable.faceUp == true)
+        if(selectable.faceUp == false)
         {
             spriteRenderer.sprite = cardFace;
         }
         else{
-            spriteRenderer.sprite = cardBack;
+            spriteRenderer.sprite = cardFace;
         }
         if(userInput.slot1)
         {
