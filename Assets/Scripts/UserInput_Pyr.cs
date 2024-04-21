@@ -117,7 +117,7 @@ public class UserInput_Pyr : MonoBehaviour
             s1.transform.position = new Vector3(selected.transform.position.x, selected.transform.position.y -100f, selected.transform.position.z);
             s2.transform.position = new Vector3(selected.transform.position.x, selected.transform.position.y -100f, selected.transform.position.z);
             
-            for (int i = 0; i < 6; i++){
+            for (int i = 0; i < 7; i++){
                 for(int j = 0; j <= i; j++){
                     if(card1.Equals(solitaire.pyramid[i, j]))
                     {
@@ -140,7 +140,7 @@ public class UserInput_Pyr : MonoBehaviour
         print("remove");
         s1.transform.position = new Vector3(s1.transform.position.x, s1.transform.position.y -100f, s1.transform.position.z);
         string card1 = s1.suit + s1.valueString;
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 7; i++)
         {
             for(int j = 0; j <= i; j++)
             {
@@ -160,7 +160,7 @@ public class UserInput_Pyr : MonoBehaviour
         bool exitOuterLoop = false;
         string card = selected.GetComponent<Selectable_Pyr>().suit + selected.GetComponent<Selectable_Pyr>().valueString;
         print(card);
-         for (i = 0; i < 6; i++){
+         for (i = 0; i < 7; i++){
             for(j = 0; j <= i; j++){
                 if(card.Equals(solitaire.pyramid[i, j]))
                 {
@@ -177,7 +177,7 @@ public class UserInput_Pyr : MonoBehaviour
         print(i);
         print(j);
 
-        if(i >= 5 || j >= 5)
+        if(i >= 6 || j >= 6)
         {
             return true;
         }

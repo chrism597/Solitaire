@@ -23,14 +23,14 @@ public class ScoreKeeper_Pyr : MonoBehaviour
     public bool HasWon()
     {
         int counter = 0;
-        for (int i = 0; i < 6; i++){
+        for (int i = 0; i < 7; i++){
             for(int j = 0; j <= i; j++){
                 if(solitaire.pyramid[i, j].Equals("empty")){
                     counter++;
                 }
             }
         }
-        if(counter == 21){
+        if(counter == 28){
             
             return true;
         }

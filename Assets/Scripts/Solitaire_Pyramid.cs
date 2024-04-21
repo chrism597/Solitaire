@@ -22,17 +22,18 @@ public class Solitaire_Pyramid : MonoBehaviour
     private List<string> bottom3 = new List<string>();
     private List<string> bottom4 = new List<string>();
     private List<string> bottom5 = new List<string>();
+    private List<string> bottom6 = new List<string>();
     public List<string> deck;
     public List<string> discardPile = new List<string>();
     private int deckLocation;
     private int trips;
     private int tripsRemainder;
-    public string[,] pyramid = new string[6,6];
+    public string[,] pyramid = new string[7,7];
 
     // Start is called before the first frame update
     void Start()
     {
-        bottoms = new List<string>[] {bottom0, bottom1,bottom2,bottom3,bottom4,bottom5};
+        bottoms = new List<string>[] {bottom0, bottom1, bottom2, bottom3, bottom4, bottom5, bottom6};
         PlayCards();
     }
 
@@ -86,12 +87,12 @@ public class Solitaire_Pyramid : MonoBehaviour
     }
      void SolitaireSort()
     {
-        for (int i = 0; i < 6; i++){
-            for(int j = 0; j < 6; j++){
+        for (int i = 0; i < 7; i++){
+            for(int j = 0; j < 7; j++){
                 pyramid[i, j] = "empty";
             }
         }
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 7; i++)
         {
             for(int j = 0; j <= i; j++)
             {   
@@ -113,24 +114,26 @@ public class Solitaire_Pyramid : MonoBehaviour
 
     IEnumerator SolitaireDeal()
     {
-        for(int i = 0; i < 6; i++)
+        for(int i = 0; i < 7; i++)
         {
-            float xOffset = 1.0f;
-            float yOffset = 0;
-            float zOffset = 0;
+            float xOffset = 2f;
+            float yOffset = 0f;
+            float zOffset = 0f;
             foreach(string card in bottoms[i]){
                 yield return new WaitForSeconds(0.05f); 
                 GameObject newCard = Instantiate(cardPrefab, new Vector3(bottomPos[i].transform.position.x + xOffset, bottomPos[i].transform.position.y + yOffset, bottomPos[i].transform.position.z + zOffset) , Quaternion.identity, bottomPos[i].transform);
                 newCard.name = card;
                 newCard.GetComponent<Selectable_Pyr>().row = i;
+                SpriteRenderer spriteRenderer = newCard.GetComponent<SpriteRenderer>();
+                spriteRenderer.sortingOrder = 10 * i;
                 if(card == bottoms[i][bottoms[i].Count-1])
                 {
                     newCard.GetComponent<Selectable_Pyr>().faceUp = true;
                 }
                 
-                //yOffset = yOffset - 0.1f;
-                //zOffset = zOffset + 0.03f;
-                xOffset = xOffset + 1.0f;
+                //yOffset = 0.5f;
+                //zOffset = zOffset - 1.0f;
+                xOffset = xOffset + 1.25f;
                 discardPile.Add(card);
             }
         }
@@ -198,7 +201,7 @@ public class Solitaire_Pyramid : MonoBehaviour
 
             foreach (string card in deckTrips[deckLocation]){
                 GameObject newTopCard = Instantiate(cardPrefab, new Vector3(deckButton.transform.position.x + xOffset, deckButton.transform.position.y, deckButton.transform.position.z), Quaternion.identity, deckButton.transform);
-                xOffset = xOffset + 1f;
+                xOffset = xOffset + 1.25f;
                 //zOffset = zOffset - 0.2f;
                 newTopCard.name = card;
                 tripsOnDisplay.Add(card);
