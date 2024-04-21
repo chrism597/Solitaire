@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UIButtons_Pyr : MonoBehaviour
 {
+    public GameObject highscorePanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +15,11 @@ public class UIButtons_Pyr : MonoBehaviour
     void Update()
     {
         
+    }
+    public void PlayAgain()
+    {
+        highscorePanel.SetActive(false);
+        ResetScene();
     }
     public void ResetScene()
     {
