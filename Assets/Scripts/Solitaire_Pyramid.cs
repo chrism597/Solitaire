@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class Solitaire_Pyramid : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class Solitaire_Pyramid : MonoBehaviour
     private int deckLocation;
     private int trips;
     private int tripsRemainder;
+    public string[,] pyramid = new string[6,6];
 
     // Start is called before the first frame update
     void Start()
@@ -42,10 +44,10 @@ public class Solitaire_Pyramid : MonoBehaviour
     {
         deck = GenerateDeck();
         Shuffle(deck);
-        foreach(string card in deck)
-        {
-            print(card);
-        }
+        //foreach(string card in deck)
+        //{
+            //print(card);
+        //}
         SolitaireSort();
         StartCoroutine(SolitaireDeal());
         SortDeckIntoTrips();
@@ -79,15 +81,31 @@ public class Solitaire_Pyramid : MonoBehaviour
     }
      void SolitaireSort()
     {
+        for (int i = 0; i < 6; i++){
+            for(int j = 0; j < 6; j++){
+                pyramid[i, j] = "empty";
+            }
+        }
         for (int i = 0; i < 6; i++)
         {
             for(int j = 0; j <= i; j++)
             {   
-                bottoms[i].Add(deck.Last<string>());
+                string card = deck.Last<string>();
+                bottoms[i].Add(card);
                 deck.RemoveAt(deck.Count - 1);
+                pyramid[i, j] = card;
+                printStr(pyramid[i, j], i, j);
             }
         }
     }
+
+    private void printStr(string v1, int i, int j)
+    {
+        print(i);
+        print(j);
+        print(v1);
+    }
+
     IEnumerator SolitaireDeal()
     {
         for(int i = 0; i < 6; i++)
@@ -124,8 +142,8 @@ public class Solitaire_Pyramid : MonoBehaviour
     }
     public void SortDeckIntoTrips()
     {
-        trips = deck.Count / 3;
-        tripsRemainder = deck.Count % 3;
+        trips = deck.Count / 2;
+        tripsRemainder = deck.Count % 2;
         deckTrips.Clear();
 
         int modifier = 0;
@@ -137,7 +155,7 @@ public class Solitaire_Pyramid : MonoBehaviour
                 myTrips.Add(deck[j + modifier]);
             }
             deckTrips.Add(myTrips);
-            modifier = modifier + 3;
+            modifier = modifier + 2;
         }
         if (tripsRemainder != 0)
         {
@@ -157,6 +175,16 @@ public class Solitaire_Pyramid : MonoBehaviour
 
     public void DealFromDeck()
     {
+        foreach (Transform child in deckButton.transform)
+        {
+            if (child.CompareTag("Card_Pyr"))
+            {
+                deck.Remove(child.name);
+                discardPile.Add(child.name);
+                Destroy(child.gameObject);
+            }
+        }
+
         if(deckLocation < trips)
         {
             tripsOnDisplay.Clear();
@@ -189,4 +217,5 @@ public class Solitaire_Pyramid : MonoBehaviour
         discardPile.Clear();
         SortDeckIntoTrips();
     }
+
 }

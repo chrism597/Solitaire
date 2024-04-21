@@ -10,7 +10,7 @@ public class Selectable_Pyr : MonoBehaviour
     public int row;
     public bool faceUp = false;
     public bool inDeckPile = false;
-    private string valueString;
+    public string valueString;
     // Start is called before the first frame update
     void Start()
     {

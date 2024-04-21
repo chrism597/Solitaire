@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Linq;
 using System.Security.Cryptography;
 using Unity.VisualScripting;
+using UnityEngine.AI;
 
 public class UserInput_Pyr : MonoBehaviour
 {
@@ -24,10 +25,12 @@ public class UserInput_Pyr : MonoBehaviour
 
     void GetMouseClick()
     {
+        var layerMask = 1 << 8;
+        layerMask = ~layerMask;
         if(Input.GetMouseButtonDown(0))
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -10));
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, layerMask);
             if(hit)
             {
                 if(hit.collider.CompareTag("Deck_Pyr"))
@@ -38,7 +41,10 @@ public class UserInput_Pyr : MonoBehaviour
                 {
                     Card(hit.collider.gameObject);
                 }
-                
+                else if(hit.collider.CompareTag("Bottom_Pyr"))
+                {
+                    print("bottom");
+                }                 
             }
         }
     }
@@ -50,27 +56,28 @@ public class UserInput_Pyr : MonoBehaviour
     void Card(GameObject selected)
     {
         print("clicked on card");
-        if(slot1 == this.gameObject)
+        if(Unlocked(selected))
         {
-            slot1 = selected;
-            if(slot1.GetComponent<Selectable_Pyr>().value == 13)
-            {
-                Stack();
-                
-            }
-        }
-        else if(slot1 != selected || slot1 != null)
-        {
-            if(Stackable(selected))
-            {
-                Stack(selected);
-            }
-            else
+            if(slot1 == this.gameObject)
             {
                 slot1 = selected;
+                if(slot1.GetComponent<Selectable_Pyr>().value == 13)
+                {
+                    Stack();
+                
+                }
             }
-            
-
+            else if(slot1 != selected || slot1 != null)
+            {
+                if(Stackable(selected))
+                {
+                    Stack(selected);
+                }
+                else
+                {
+                    slot1 = selected;
+                }
+            }
         }
     }
     
@@ -90,11 +97,27 @@ public class UserInput_Pyr : MonoBehaviour
     {
         Selectable_Pyr s1 = slot1.GetComponent<Selectable_Pyr>();
         Selectable_Pyr s2 = selected.GetComponent<Selectable_Pyr>();
+        string card1 = s1.suit + s1.valueString;
+        string card2 = s2.suit + s2.valueString;
         if((s1.value + s2.value) == 13){}
         {
             print("remove");
             s1.transform.position = new Vector3(selected.transform.position.x, selected.transform.position.y -100f, selected.transform.position.z);
             s2.transform.position = new Vector3(selected.transform.position.x, selected.transform.position.y -100f, selected.transform.position.z);
+            
+            for (int i = 0; i < 6; i++){
+                for(int j = 0; j <= i; j++){
+                    if(card1.Equals(solitaire.pyramid[i, j]))
+                    {
+                        solitaire.pyramid[i, j] = "empty";
+                    
+                    }
+                    if(card2.Equals(solitaire.pyramid[i,j]))
+                    {
+                        solitaire.pyramid[i, j] = "empty";
+                    }
+            }
+        }
             //solitaire.tripsOnDisplay.Remove(slot1.name);
             slot1 = this.gameObject;
             
@@ -105,6 +128,53 @@ public class UserInput_Pyr : MonoBehaviour
         Selectable_Pyr s1 = slot1.GetComponent<Selectable_Pyr>();
         print("remove");
         s1.transform.position = new Vector3(s1.transform.position.x, s1.transform.position.y -100f, s1.transform.position.z);
+        string card1 = s1.suit + s1.valueString;
+        for (int i = 0; i < 6; i++)
+        {
+            for(int j = 0; j <= i; j++)
+            {
+                if(card1.Equals(solitaire.pyramid[i, j]))
+                {
+                    solitaire.pyramid[i, j] = "empty";
+                    
+                }
+            }
+        }
         slot1 = this.gameObject;
+    }
+    bool Unlocked(GameObject selected)
+    {
+        int i = 0;
+        int j = 0;
+        bool exitOuterLoop = false;
+        string card = selected.GetComponent<Selectable_Pyr>().suit + selected.GetComponent<Selectable_Pyr>().valueString;
+        print(card);
+         for (i = 0; i < 6; i++){
+            for(j = 0; j <= i; j++){
+                if(card.Equals(solitaire.pyramid[i, j]))
+                {
+                    print(solitaire.pyramid[i, j]);
+                    exitOuterLoop = true;
+                    break;
+                }
+            }
+            if (exitOuterLoop)
+            {
+                break;
+            }
+        }
+        print(i);
+        print(j);
+
+        if(i >= 5 || j >= 5)
+        {
+            return true;
+        }
+        else if(solitaire.pyramid[i + 1, j].Equals("empty") && solitaire.pyramid[i + 1, j + 1].Equals("empty"))
+        {
+            return true;
+        }
+
+        return false;
     }
 }
