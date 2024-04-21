@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System;
+using UnityEngine.Rendering;
 
 public class Solitaire_Pyramid : MonoBehaviour
 {
@@ -42,6 +43,10 @@ public class Solitaire_Pyramid : MonoBehaviour
     }
     public void PlayCards()
     {
+        foreach(List<string> list in bottoms)
+        {
+            list.Clear();
+        }
         deck = GenerateDeck();
         Shuffle(deck);
         //foreach(string card in deck)
@@ -110,7 +115,7 @@ public class Solitaire_Pyramid : MonoBehaviour
     {
         for(int i = 0; i < 6; i++)
         {
-            float xOffset = 0;
+            float xOffset = 1.0f;
             float yOffset = 0;
             float zOffset = 0;
             foreach(string card in bottoms[i]){
@@ -124,8 +129,8 @@ public class Solitaire_Pyramid : MonoBehaviour
                 }
                 
                 //yOffset = yOffset - 0.1f;
-                zOffset = zOffset + 0.03f;
-                xOffset = xOffset + 1f;
+                //zOffset = zOffset + 0.03f;
+                xOffset = xOffset + 1.0f;
                 discardPile.Add(card);
             }
         }

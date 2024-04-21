@@ -10,6 +10,7 @@ TagManager:
   - Deck_Pyr
   - Card_Pyr
   - Bottom_Pyr
+  - Top
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Row
   - 
   - 
   - 

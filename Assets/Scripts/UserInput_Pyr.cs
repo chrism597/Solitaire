@@ -9,12 +9,12 @@ using UnityEngine.AI;
 public class UserInput_Pyr : MonoBehaviour
 {
     private Solitaire_Pyramid solitaire;
-    public GameObject slot1;
+    public GameObject slot1 = null;
     // Start is called before the first frame update
     void Start()
     {
         solitaire = FindObjectOfType<Solitaire_Pyramid>();
-        slot1 = this.gameObject;
+        // slot1 = this.gameObject;
     }
 
     // Update is called once per frame
@@ -58,20 +58,32 @@ public class UserInput_Pyr : MonoBehaviour
         print("clicked on card");
         if(Unlocked(selected))
         {
-            if(slot1 == this.gameObject)
+            // selected first card
+            if(slot1 == null) 
             {
                 slot1 = selected;
                 if(slot1.GetComponent<Selectable_Pyr>().value == 13)
                 {
                     Stack();
-                
+                    slot1 = null;
                 }
             }
-            else if(slot1 != selected || slot1 != null)
+            // the same card is selected multiple times
+            else if(slot1 == selected)
+            {
+                if(slot1.GetComponent<Selectable_Pyr>().value == 13)
+                {
+                    Stack();
+                    slot1 = null;
+                }
+            }
+            // second card is selected
+            else if(slot1 != selected && slot1 != null)
             {
                 if(Stackable(selected))
                 {
                     Stack(selected);
+                    slot1 = null;
                 }
                 else
                 {
@@ -99,7 +111,7 @@ public class UserInput_Pyr : MonoBehaviour
         Selectable_Pyr s2 = selected.GetComponent<Selectable_Pyr>();
         string card1 = s1.suit + s1.valueString;
         string card2 = s2.suit + s2.valueString;
-        if((s1.value + s2.value) == 13){}
+        if((s1.value + s2.value) == 13)
         {
             print("remove");
             s1.transform.position = new Vector3(selected.transform.position.x, selected.transform.position.y -100f, selected.transform.position.z);
@@ -119,8 +131,7 @@ public class UserInput_Pyr : MonoBehaviour
             }
         }
             //solitaire.tripsOnDisplay.Remove(slot1.name);
-            slot1 = this.gameObject;
-            
+            //slot1 = this.gameObject;
         }
     }
     void Stack()
@@ -140,7 +151,7 @@ public class UserInput_Pyr : MonoBehaviour
                 }
             }
         }
-        slot1 = this.gameObject;
+        //slot1 = this.gameObject;
     }
     bool Unlocked(GameObject selected)
     {
