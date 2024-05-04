@@ -709,8 +709,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 572085605}
   - {fileID: 573374408}
+  - {fileID: 572085605}
   - {fileID: 1934302278}
   - {fileID: 925520280}
   m_Father: {fileID: 0}
@@ -1606,7 +1606,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 824824929}
+  - {fileID: 857700652}
   - {fileID: 1500721249}
   m_Father: {fileID: 253877797}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1636,7 +1636,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 573374407}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1774,7 +1774,7 @@ Transform:
   - {fileID: 476069947}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &824824928
+--- !u!1 &857700651
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1782,9 +1782,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 824824929}
-  - component: {fileID: 824824931}
-  - component: {fileID: 824824930}
+  - component: {fileID: 857700652}
+  - component: {fileID: 857700654}
+  - component: {fileID: 857700653}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -1792,13 +1792,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &824824929
+--- !u!224 &857700652
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 824824928}
+  m_GameObject: {fileID: 857700651}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 9.681885}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -1811,20 +1811,20 @@ RectTransform:
   m_AnchoredPosition: {x: -431.57227, y: 187.28009}
   m_SizeDelta: {x: 2340, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &824824930
+--- !u!114 &857700653
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 824824928}
+  m_GameObject: {fileID: 857700651}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.16981131, g: 0.16981131, b: 0.16981131, a: 0.6745098}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.38431373}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1841,13 +1841,13 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!222 &824824931
+--- !u!222 &857700654
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 824824928}
+  m_GameObject: {fileID: 857700651}
   m_CullTransparentMesh: 1
 --- !u!1 &873453489
 GameObject:
@@ -2341,6 +2341,18 @@ MonoBehaviour:
       - m_Target: {fileID: 253877798}
         m_TargetAssemblyTypeName: UIButtons_Pyr, Assembly-CSharp
         m_MethodName: ResetScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 572085604}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: Resume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3354,7 +3366,7 @@ GameObject:
   - component: {fileID: 1934302280}
   - component: {fileID: 1934302279}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Win Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
