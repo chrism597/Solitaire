@@ -28,4 +28,9 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1;
 
     }
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        pauseMenu.SetActive(false);
+    }
 }
