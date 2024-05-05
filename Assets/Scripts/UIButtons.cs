@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UIButtons : MonoBehaviour
@@ -28,12 +30,18 @@ public class UIButtons : MonoBehaviour
     {
         // find all the cards and remove them
         UpdateSprite[] cards = FindObjectsOfType<UpdateSprite>();
+        print("Number of cards that have been used ---> " + cards.Length);
         foreach (UpdateSprite card in cards)
         {
-            Destroy(card.gameObject);
+            if (!String.Equals(card.gameObject.name, "Card"))
+            {
+                print("Card that has been used ---> " + card.gameObject.name);
+                Destroy(card.gameObject);
+            }
         }
         ClearTopValues();
         // deal new cards
+        FindObjectOfType<UserInput>().slot1 = FindObjectOfType<UserInput>().gameObject;
         FindObjectOfType<Solitaire>().PlayCards();
     }
 
