@@ -11,6 +11,7 @@ TagManager:
   - Card_Pyr
   - Bottom_Pyr
   - Top
+  - Audio
   layers:
   - Default
   - TransparentFX
