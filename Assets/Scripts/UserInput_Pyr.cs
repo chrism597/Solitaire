@@ -5,16 +5,23 @@ using System.Linq;
 using System.Security.Cryptography;
 using Unity.VisualScripting;
 using UnityEngine.AI;
+using System;
 
 public class UserInput_Pyr : MonoBehaviour
 {
     private Solitaire_Pyramid solitaire;
     public GameObject slot1 = null;
+    private static float xOffset = 0.05f;
+
+    private static T FindAnyObjectByType<T>(string v)
+    {
+        throw new NotImplementedException();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         solitaire = FindObjectOfType<Solitaire_Pyramid>();
-        // slot1 = this.gameObject;
     }
 
     // Update is called once per frame
@@ -56,7 +63,7 @@ public class UserInput_Pyr : MonoBehaviour
     void Card(GameObject selected)
     {
         print("clicked on card");
-        if(Unlocked(selected))
+        if(Unlocked(selected) && selected.GetComponent<Selectable_Pyr>().pickable)
         {
             // selected first card
             if(slot1 == null) 
@@ -97,7 +104,7 @@ public class UserInput_Pyr : MonoBehaviour
     {
         Selectable_Pyr s1 = slot1.GetComponent<Selectable_Pyr>();
         Selectable_Pyr s2 = selected.GetComponent<Selectable_Pyr>();
-        
+    
         if((s1.value + s2.value) == 13)
         {
             print("Pairable");
@@ -114,9 +121,13 @@ public class UserInput_Pyr : MonoBehaviour
         if((s1.value + s2.value) == 13)
         {
             print("remove");
-            s1.transform.position = new Vector3(selected.transform.position.x, selected.transform.position.y - 100f, selected.transform.position.z);
-            s2.transform.position = new Vector3(selected.transform.position.x, selected.transform.position.y - 100f, selected.transform.position.z);
-            
+            //s1.transform.position = new Vector3(selected.transform.position.x, selected.transform.position.y - 100f, selected.transform.position.z);
+            //s2.transform.position = new Vector3(selected.transform.position.x, selected.transform.position.y - 100f, selected.transform.position.z);
+            s1.transform.position = new Vector3(solitaire.discardCard.transform.position.x + xOffset, solitaire.discardCard.transform.position.y, solitaire.discardCard.transform.position.z);
+            s2.transform.position = new Vector3(solitaire.discardCard.transform.position.x + xOffset + xOffset, solitaire.discardCard.transform.position.y, solitaire.discardCard.transform.position.z);
+            s1.pickable = false;
+            s2.pickable = false;
+            xOffset += 0.05f;
             for (int i = 0; i < 7; i++){
                 for(int j = 0; j <= i; j++){
                     if(card1.Equals(solitaire.pyramid[i, j]))
@@ -138,7 +149,10 @@ public class UserInput_Pyr : MonoBehaviour
     {
         Selectable_Pyr s1 = slot1.GetComponent<Selectable_Pyr>();
         print("remove");
-        s1.transform.position = new Vector3(s1.transform.position.x, s1.transform.position.y - 1000f, s1.transform.position.z);
+        // s1.transform.position = new Vector3(s1.transform.position.x, s1.transform.position.y - 1000f, s1.transform.position.z);
+        s1.transform.position = new Vector3(solitaire.discardCard.transform.position.x + xOffset, solitaire.discardCard.transform.position.y, solitaire.discardCard.transform.position.z);
+        s1.pickable = false;
+        xOffset += 0.05f;
         string card1 = s1.suit + s1.valueString;
         for (int i = 0; i < 7; i++)
         {
